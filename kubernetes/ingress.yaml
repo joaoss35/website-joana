@@ -7,11 +7,22 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   tls:
-  - hosts: 
+  - hosts:
     - joanacpereira.me
+    - www.joanacpereira.me
     secretName: joana-secret-tls
   rules:
   - host: joanacpereira.me
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: website-service
+            port:
+              number: 80
+  - host: www.joanacpereira.me
     http:
       paths:
       - path: /
