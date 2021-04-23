@@ -1,0 +1,15 @@
+{{ $component := (dict "Global" $ "Component" "website-joana") }}
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "common.names.full" $component }}
+  labels: {{ include "common.labels" $component | nindent 4 }}
+spec:
+  selector: {{ include "common.labels" $component | nindent 4}}
+  type: ClusterIP
+  ports:
+    - name: http
+      port: 80
+      protocol: TCP
+      targetPort: http

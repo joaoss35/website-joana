@@ -1,0 +1,9 @@
+apiVersion: v2
+name: website-joana
+description: Chart definitions for website-joana
+type: application
+version: 1.0.0
+keywords:
+  - website
+maintainers:
+  - name: joaopachecos@hotmail.com
