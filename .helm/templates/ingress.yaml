@@ -16,9 +16,16 @@ spec:
             backend:
               serviceName: {{ include "common.names.full" $component }}
               servicePort: http
+    - host: "www.{{ .Values.website.ingress.host }}"
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: {{ include "common.names.full" $component }}
+              servicePort: http
   tls:
     - hosts:
         - {{ .Values.website.ingress.host }}
+        - www.joanacpereira.me
       secretName: {{ include "common.names.full" $component }}-tls
   {{- end }}
-
