@@ -77,6 +77,15 @@ helm install website-joana . -f values.yaml --kube-context <your_context>-n <you
 helm upgrade website-joana . -f values.yaml --kube-context <your_context>-n <your_namespace>
 ````
 
+**Note**: Don't forget to have [nginx](https://kubernetes.github.io/ingress-nginx/how-it-works/) (or other **ingress controller**) deployed. You can make it so by running:
+```shell
+#Add stable to your local helm repos
+helm repo add stable https://charts.helm.sh/stable
+
+#Install nginx ingress controller
+helm install ingres-controller stable/nginx-ingress --set controller.publishService.enabled=true
+```
+
 ## Actions CI
 
 To be added.
